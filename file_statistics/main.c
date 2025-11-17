@@ -1,3 +1,71 @@
+#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+int calcualteAmountOfLines(FILE *file) {
+  int amountOfLines = 0;
+  char ch;
+
+  while ((ch = fgetc(file)) != EOF) {
+    if (ch == '\n') {
+      amountOfLines++;
+    }
+  }
+
+  return amountOfLines;
+};
+int calculateAmountOfWords(FILE *file) {
+  int amountOfWords = 0;
+  char ch;
+
+  while ((ch = fgetc(file)) != EOF) {
+    if (ch == ' ' || ch == '\n') {
+      amountOfWords++;
+    }
+  }
+
+  return amountOfWords;
+}
+int calculateAmountOfChars(FILE *file) {
+  int amountOfChars = 0;
+  char ch;
+
+  while ((ch = fgetc(file)) != EOF) {
+    amountOfChars++;
+  }
+
+  return amountOfChars;
+}
+
+int main() {
+
+  int amountOfWords = 0, amountOfLines = 0, amountOfChars = 0;
+  FILE *file;
+
+  char ch;
+
+  file = fopen("source.txt", "r");
+  if (file != NULL) {
+    printf("File opened successfully\n");
+  } else {
+    perror("Error opening file");
+    return 1;
+  }
+
+  amountOfChars = calculateAmountOfChars(file);
+  rewind(file);
+  amountOfWords = calculateAmountOfWords(file);
+  rewind(file);
+  amountOfLines = calcualteAmountOfLines(file);
+  fclose(file);
+
+  printf("Amount of chars: %d\n", amountOfChars);
+  printf("Amount of words: %d\n", amountOfWords);
+  printf("Amount of lines: %d\n", amountOfLines);
+
+  return 0;
+}
+
 // Operators that I would use: sizeof for getting the size of the file in bytes
 // fopen() to open and read the file in the read mode as the second argument
 // fopen("file.txt", "r") Task:  File Statistics A. Count and display:
@@ -31,54 +99,3 @@
 // suggestion to calculate the number of characters is to read the file with
 // buffer and write it it to char array where I will be able to count the
 // characters with sizeof function
-#include <stdio.h>
-#include <stdlib.h>
-
-int main() {
-  int amountOfWords, amountOfLines, amountOfChars = 0;
-  FILE *file;
-  char *buffer;
-  buffer = malloc(2048 * sizeof(char)); // this 1024 === 1kb
-
-  // how to create dynamic char array in C ?
-  //  We can create dynamic char array in C using malloc function from stdlib.h
-  //  library
-
-  file = fopen("source.txt", "r");
-  // We have to start the while loop until we face with the end of the file. We
-  // have EOF macro for that === "\0"
-  // fgets()
-  while (fgetc(file) != EOF) {
-    char *pos = buffer;
-
-    if (buffer[amountOfChars] == '\n') {
-      amountOfLines++;
-    }
-
-    if (buffer[amountOfChars] == EOF) {
-      break;
-    }
-    if (buffer[amountOfChars] == ' ' || buffer[amountOfChars] == '\n') {
-      amountOfWords++;
-    }
-
-    // we have to get to know where the words start and where they end? /
-    //
-
-    // printf("%c", buffer[amountofChars]);
-    // How we could calculate the amount of words inside this while loop ?
-    amountOfChars++;
-  }
-
-  printf("%zu\n", sizeof(buffer));
-  printf("Amount of chars: %d\n", amountOfChars);
-  printf("Amount of words: %d\n", amountOfWords);
-  printf("Amount of lines: %d\n", amountOfLines);  
-  // if we get 2303 characters and we allocated only 2048 bytes to the buffer,
-  //  we have to reallocate more memory to the buffer so we can fit all the
-  //  characters from the file ? we can use realloc function for that
-
-  free(buffer);
-  buffer = NULL;
-  return 0;
-}
