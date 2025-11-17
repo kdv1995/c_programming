@@ -1,0 +1,7 @@
+ajsdfkljasdfkljasdklfjasdklfjasdklflsdflsdfj
+ajsdkfjasldkfsdjfklsadjfklajsdkflasdfdsafasdjfkasdjfklasdjfkl
+// Tresitter is responbile for syntax highlighting. It parse on the lsp level variables, functi9ons, keywords etc. and highlights them accordingly.
+//mason ->  
+//nvim lsp config ->  language server protocols -> python lsp completion, rust, c++
+
+//colorshcems one dark 

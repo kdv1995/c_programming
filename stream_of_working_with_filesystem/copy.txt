@@ -1,0 +1,22 @@
+Hello,
+Hello,
+Name: Alice Smith 30 123-456-7890 American 
+Name: Alice Smith 
+  Age: 30 Phone number: 123-456-7890 
+ Nationality: American 
+Name: Alice Smith 
+  Age: 30 
+ Phone number: 123-456-7890 
+ Nationality: American 
+Name: Alice Smith
+  Age: 30
+ Phone number: 123-456-7890
+ Nationality: American
+Name: Alice Smith
+ Age: 30
+Phone number: 123-456-7890
+Nationality: American
+Name: Alice Smith
+Age: 30
+Phone number: 123-456-7890
+Nationality: American
