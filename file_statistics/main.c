@@ -73,7 +73,7 @@ int main() {
   printf("%zu\n", sizeof(buffer));
   printf("Amount of chars: %d\n", amountOfChars);
   printf("Amount of words: %d\n", amountOfWords);
-  printf("Amount of lines: %d\n", amountOfLines);
+  printf("Amount of lines: %d\n", amountOfLines);  
   // if we get 2303 characters and we allocated only 2048 bytes to the buffer,
   //  we have to reallocate more memory to the buffer so we can fit all the
   //  characters from the file ? we can use realloc function for that
