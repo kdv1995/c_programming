@@ -33,23 +33,25 @@ char shift_char(char ch, int offset) {
 
   if (ch >= 'a' && ch <= 'z') {
     return 'a' + (ch - 'a' + offset + 26) % 26;
+    // z - a = 25; -> we find the position in the alphabet; 0 -25
+    //  we add 25 + 5-> 30;
+    // we do modulo 26 -> 30 % 26 = 4; 0 -> a , 1 -> b, 2 -> c, 3 -> d, 4 -> e
+    //  we add 'a' === 97 + 4 = 101 -> 'e'
   }
-  // 97 < 105 && 105 < 122
-  // 97 + (105 - 97 + 3) % 26 = 100;
 
   if (ch >= 'A' && ch <= 'Z') {
     return 'A' + (ch - 'A' + offset + 26) % 26;
   }
-  return ch; // не літера — не чіпаємо
+  return ch;
+  // space, carriege return we skip it as it considered non alphabetic char
 }
-
 
 int main() {
   int offset = 0;
 
   FILE *source;
   FILE *target;
-  const char *path = "target.txt";
+  const char *path = "source.txt";
   source = fopen(path, "r");
   target = fopen("decoded.txt", "w");
 
@@ -67,7 +69,6 @@ int main() {
   scanf("%d", &offset);
 
   while ((ch = fgetc(source)) != EOF) {
-
     fputc(shift_char((char)ch, offset), target);
   }
 
