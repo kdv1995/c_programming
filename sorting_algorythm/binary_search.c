@@ -13,6 +13,8 @@
 // if we have 10 elements in the array we search the middle if the middle
 // elements is equal to target we return the index.
 // if elements is less than
+
+#include "binary_search.h"
 int binarySearch(int arr[], int size, int target) {
   // we search elements on the 3rd index which is  7;
   // length = 6
@@ -34,9 +36,6 @@ int binarySearch(int arr[], int size, int target) {
   return -1;
 }
 
-#include "binary_search.h"
-#include <stdio.h>
-#include <stdlib.h>
 int main() {
   int arr[] = {1, 2, 3, 4, 7, 9};
   int arrSize = sizeof(arr) / sizeof(arr[0]);
